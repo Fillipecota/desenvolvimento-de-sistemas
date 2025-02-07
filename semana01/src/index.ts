@@ -4,9 +4,17 @@ import Exercicio02 from "./Exercicio02";
 import Exercicio03 from "./Exercicio03";
 import Exercicio04 from "./Exercicio04";
 import Exercicio05 from "./Exercicio05";
+import Exercicio06 from "./Exercicio06";
+import Exercicio07 from "./Exercicio07";
+import Exercicio08 from "./Exercicio08";
+import Exercicio09 from "./Exercicio09";
+import Exercicio10 from "./Exercicio10";
+import Exercicio11 from "./Exercicio11";
+import Exercicio12 from "./Exercicio12";
+import Exercicio13 from "./Exercicio13";
 
 
-var opcao = leia.keyInSelect(["Exercicio 01", "Exercicio 02", "Exercicio 03", "Exercicio 04"]) + 1;
+var opcao = leia.keyInSelect(["Exercicio 01", "Exercicio 02", "Exercicio 03", "Exercicio 04", "Exercicio 05", "Exercicio 06", "Exercicio 07", "Exercicio 08", "Exercicio 09", "Exercicio 10", "Exercicio 11", "Exercicio 12","Exercicio 13"]) + 1;
 switch (opcao) {
     case 1:
         Exercicio01()
@@ -22,6 +30,30 @@ switch (opcao) {
         break;
     case 5:
         Exercicio05()
+        break;
+    case 6:
+        Exercicio06()
+        break;
+    case 7:
+        Exercicio07()
+        break;
+    case 8:
+        Exercicio08()
+        break;
+    case 9:
+        Exercicio09()
+        break;
+    case 10:
+        Exercicio10()
+        break;
+    case 11:
+        Exercicio11()
+        break;
+    case 12:
+        Exercicio12()
+        break;
+    case 13:
+        Exercicio13()
         break;
 }
 
