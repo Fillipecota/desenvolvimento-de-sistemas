@@ -12,9 +12,43 @@ import Exercicio10 from "./Exercicio10";
 import Exercicio11 from "./Exercicio11";
 import Exercicio12 from "./Exercicio12";
 import Exercicio13 from "./Exercicio13";
+import Exercicio14 from "./Exercicio14";
+import Exercicio15 from "./Exercicio15";
+import Exercicio16 from "./Exercicio16";
+import Exercicio17 from "./Exercicio17";
+import Exercicio18 from "./Exercicio18";
+import Exercicio19 from "./Exercicio19";
+import Exercicio20 from "./Exercicio20";
+import Exercicio21 from "./Exercicio21";
+import Exercicio22 from "./Exercicio22";
 
 
-var opcao = leia.keyInSelect(["Exercicio 01", "Exercicio 02", "Exercicio 03", "Exercicio 04", "Exercicio 05", "Exercicio 06", "Exercicio 07", "Exercicio 08", "Exercicio 09", "Exercicio 10", "Exercicio 11", "Exercicio 12","Exercicio 13"]) + 1;
+var opcao = leia.keyInSelect([
+    "Exercicio 01",
+    "Exercicio 02",
+    "Exercicio 03",
+    "Exercicio 04",
+    "Exercicio 05",
+    "Exercicio 06",
+    "Exercicio 07",
+    "Exercicio 08",
+    "Exercicio 09",
+    "Exercicio 10",
+    "Exercicio 11",
+    "Exercicio 12",
+    "Exercicio 13",
+    "Exercicio 14",
+    "Exercicio 15",
+    "Exercicio 16",
+    "Exercicio 17",
+    "Exercicio 18",
+    "Exercicio 19",
+    "Exercicio 20",
+    "Exercicio 21",
+    "Exercicio 22",]) + 1;
+
+
+
 switch (opcao) {
     case 1:
         Exercicio01()
@@ -55,6 +89,34 @@ switch (opcao) {
     case 13:
         Exercicio13()
         break;
+    case 14:
+        Exercicio14()
+        break;
+    case 15:
+        Exercicio15()
+        break;
+    case 16:
+        Exercicio16()
+        break;
+    case 17:
+        Exercicio17()
+        break;
+    case 18:
+        Exercicio18()
+        break;
+    case 19:
+        Exercicio19()
+        break;
+    case 20:
+        Exercicio20()
+        break;
+    case 21:
+        Exercicio21()
+        break;
+    case 22:
+        Exercicio22()
+        break
+
 }
 
 
