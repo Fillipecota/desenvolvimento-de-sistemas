@@ -21,6 +21,12 @@ import Exercicio19 from "./Exercicio19";
 import Exercicio20 from "./Exercicio20";
 import Exercicio21 from "./Exercicio21";
 import Exercicio22 from "./Exercicio22";
+import Exercicio23 from "./Exercicio23";
+import Exercicio24 from "./Exercicio24";
+import Exercicio25 from "./Exercicio25";
+import Exercicio26 from "./Exercicio26";
+import Exercicio27 from "./Exercicio27";
+import Exercicio28 from "./Exercicio28";
 
 
 var opcao = leia.keyInSelect([
@@ -45,7 +51,13 @@ var opcao = leia.keyInSelect([
     "Exercicio 19",
     "Exercicio 20",
     "Exercicio 21",
-    "Exercicio 22",]) + 1;
+    "Exercicio 22",
+    "Exercicio 23",
+    "Exercicio 24",
+    "Exercicio 25",
+    "Exercicio 26",
+    "Exercicio 27",
+    "Exercicio 28"]) + 1;
 
 
 
@@ -116,6 +128,24 @@ switch (opcao) {
     case 22:
         Exercicio22()
         break
+    case 23:
+        Exercicio23()
+        break;
+    case 24:
+        Exercicio24()
+        break;
+    case 25:
+        Exercicio25()
+        break;
+    case 26:
+        Exercicio26()
+        break;
+    case 27:
+        Exercicio27()
+        break;
+    case 28:
+        Exercicio28()
+        break;
 
 }
 
