@@ -27,6 +27,29 @@ import Exercicio25 from "./Exercicio25";
 import Exercicio26 from "./Exercicio26";
 import Exercicio27 from "./Exercicio27";
 import Exercicio28 from "./Exercicio28";
+import Exercicio29 from "./Exercicio29";
+import Exercicio30 from "./Exercicio30";
+import Exercicio31 from "./Exercicio31";
+import Exercicio35 from "./Exercicio35";
+import Exercicio32 from "./Exercicio32";
+import Exercicio33 from "./Exercicio33";
+import Exercicio34 from "./Exercicio34";
+import Exercicio36 from "./Exercicio36";
+import Exercicio37 from "./Exercicio37";
+import Exercicio38 from "./Exercicio38";
+import Exercicio39 from "./Exercicio39";
+import Exercicio40 from "./Exercicio40";
+import Exercicio41 from "./Exercicio41";
+import Exercicio42 from "./Exercicio42";
+import Exercicio43 from "./Exercicio43";
+import Exercicio44 from "./Exercicio44";
+import Exercicio45 from "./Exercicio45";
+import Exercicio46 from "./Exercicio46";
+import Exercicio47 from "./Exercicio47";
+import Exercicio48 from "./Exercicio48";
+import Exercicio49 from "./Exercicio49";
+import Exercicio50 from "./Exercicio50";
+import Exercicio51 from "./Exercicio51";
 
 
 var opcao = leia.keyInSelect([
@@ -57,8 +80,32 @@ var opcao = leia.keyInSelect([
     "Exercicio 25",
     "Exercicio 26",
     "Exercicio 27",
-    "Exercicio 28"]) + 1;
+    "Exercicio 28",
+    "Exercicio 29",
+    "Exercicio 30",
+    "Exercicio 31",
+    "Exercicio 32",
+    "Exercicio 33",
+    "Exercicio 34",
+    "Exercicio 35"]) + 1;
 
+var opcao = leia.keyInSelect([
+    "Exercicio 36",
+    "Exercicio 37",
+    "Exercicio 38",
+    "Exercicio 39",
+    "Exercicio 40",
+    "Exercicio 41",
+    "Exercicio 42",
+    "Exercicio 43",
+    "Exercicio 44",
+    "Exercicio 45",
+    "Exercicio 46",
+    "Exercicio 47",
+    "Exercicio 48",
+    "Exercicio 49",
+    "Exercicio 50",
+    "Exercicio 51"]) + 35;
 
 
 switch (opcao) {
@@ -145,6 +192,75 @@ switch (opcao) {
         break;
     case 28:
         Exercicio28()
+        break;
+    case 29:
+        Exercicio29()
+        break;
+    case 30:
+        Exercicio30()
+        break;
+    case 31:
+        Exercicio31()
+        break;
+    case 32:
+        Exercicio32()
+        break;
+    case 33:
+        Exercicio33()
+        break;
+    case 34:
+        Exercicio34()
+        break;
+    case 35:
+        Exercicio35()
+        break;
+    case 36:
+        Exercicio36()
+        break;
+    case 37:
+        Exercicio37()
+        break;
+    case 38:
+        Exercicio38()
+        break;
+    case 39:
+        Exercicio39()
+        break;
+    case 40:
+        Exercicio40()
+        break;
+    case 41:
+        Exercicio41()
+        break;
+    case 42:
+        Exercicio42()
+        break;
+    case 43:
+        Exercicio43()
+        break;
+    case 44:
+        Exercicio44()
+        break;
+    case 45:
+        Exercicio45()
+        break;
+    case 46:
+        Exercicio46()
+        break;
+    case 47:
+        Exercicio47()
+        break;
+    case 48:
+        Exercicio48
+        break;
+    case 49:
+        Exercicio49()
+        break;
+    case 50:
+        Exercicio50()
+        break;
+    case 51:
+        Exercicio51()
         break;
 
 }

@@ -12,7 +12,7 @@ export default function Exercicio22() {
         }
         if (numero < numeroMenor) {
             numeroMenor += numero
-        } 
+        }
         if (numero > numeroMaior) {
             numeroMaior += numero
         }
