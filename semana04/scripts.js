@@ -5,16 +5,20 @@ async function loadProfile() {
         return;
     }
 
-    const response = await fetch(`https://api.github.com/users/${usename}`)
+    const response = await fetch(`https://api.github.com/users/${usename}`);
     const user = await response.json();
 
-
-
     const profileElement = document.createElement("div");
-    profilesElement.classList.add("prodile-item")
+    profileElement.classList.add("profile-item");
     profileElement.innerHTML = `
-    <img src= ${user.avatar_url}
-    `
+    <img src="${user.avatar_url}" />
+    <h2>${user.name || user.login}</h2>    
+    <h2>${user.public_repos}</h2>    
+    <h2>${user.followers}</h2>    
+    <h2>${user.following}</h2> 
+    <p>${user.bio}<\p>   
+    `;
 
-    const Profile = document.getElementById("profiles");
+    const profiles = document.getElementById("profiles");
+    profiles.appendChild(profileElement);
 }
