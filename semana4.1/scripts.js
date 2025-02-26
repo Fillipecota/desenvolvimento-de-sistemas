@@ -23,7 +23,7 @@ async function loadNomes() {
     }
 
     const ctx = document.getElementById("chart");
-    const chart = new chart(ctx, {
+     chart = new Chart(ctx, {
         type:'line',
         data: {
             labels: vetorDecadas,
