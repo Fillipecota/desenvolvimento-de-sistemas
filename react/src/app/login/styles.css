@@ -43,6 +43,7 @@
 .button:disabled{
     background-color: #698daa;
     cursor: not-allowed;
+    color: black;
 }
 
 .form h2 {

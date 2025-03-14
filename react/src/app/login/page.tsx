@@ -8,6 +8,7 @@ export default function login() {
     const [email, setEmail] = useState<string>('')
     const [Password, setPassword] = useState<string>('')
     const router = useRouter()
+    const disabledButton = (!email || !(Password.length >= 8))
 
     async function handleSubmit() {
 
@@ -43,7 +44,7 @@ export default function login() {
                     onChange={(event) => setPassword(event.target.value)} />
 
                 <button className="button" onClick={handleSubmit}
-                    disabled={!email || !Password}
+                    disabled={disabledButton}
                 >
                     entrar
                 </button>
