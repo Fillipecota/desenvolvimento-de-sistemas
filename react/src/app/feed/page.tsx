@@ -5,6 +5,8 @@ import Header from "@/components/Header"
 import "./styles.css"
 import Image from "next/image"
 import Avatar from '@/components/Avatar'
+import { BsPencilSquare } from "react-icons/bs";
+import Post from '@/components/Post'
 
 export default function Feed() {
 
@@ -19,11 +21,19 @@ export default function Feed() {
                         <Avatar src='https://avatars.githubusercontent.com/u/170477610?v=4' hasBorder />
                         <strong>Fellipe Sant Anna Cota</strong>
                         <span>Metarlugico</span>
+                        <footer>
+                            <button className='button-edit-profile'>
+                                <BsPencilSquare />
+                                Editar seu perfil
+                            </button>
+                        </footer>
                     </div>
                 </aside>
 
                 <main className="main">
-
+                    <Post post={{} as any} />
+                    <Post post={{} as any} />
+                    <Post post={{} as any} />
                 </main>
             </div>
         </div>
