@@ -50,42 +50,63 @@
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    padding: 16px 0px;
+    width: 100%;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #323238;
 }
 
 .form strong {
-    color: #ffff;
+    line-height: 1.6;
+    color: #e1e1e6;
+    font-size: 16px;
 }
 
-.forn footer {
-    padding: 16px;
-    background-color: #8d8d99;
-    border-radius: 8px;
-    color: azure;
-
-}
 
 .form textarea {
+    width: 100%;
+    background-color: #121214;
+    color: #121214;
+    border: 0px;
+    height: 80px;
     padding: 16px;
-    margin:16px  0px;
-    color: #202024;
     border-radius: 8px;
-    background-color: black;
+    line-height: 1.4;
+    margin-top: 24px;
+    color: #e1e1e6;
+    resize: none;
 }
 
+.form textarea:focus-within {
+    outline: 2px solid #00875f;
+}
+
+.form footer {
+    visibility: hidden;
+    max-height: 0;
+}
+
+.form:focus-within footer{
+    visibility: visible;
+    max-height: none;
+}
 
 .form footer button {
+    padding: 16px 24px;
+    margin-top: 16px;
+    border-radius: 8px;
+    border: none;
     background-color: #00875f;
     color: #ffff;
-    border: 1px solid #00875f;
-    border-radius: 8px;
-    padding: 16px 24px;
     font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
     cursor: pointer;
+}
+
+.form footer button:not(:disabled):hover {
+    background-color: #00b37e;
+}
+
+.form footer button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
 }

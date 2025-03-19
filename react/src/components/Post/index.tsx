@@ -1,5 +1,9 @@
+'use client'
+import { FormEvent, useState } from "react";
 import Avatar from "../Avatar";
 import "./styles.css";
+import { format, formatDistance, formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
 type Autor = {
     name: string;
@@ -25,33 +29,49 @@ type postProps = {
 
 
 export default function Post({ post }: postProps) {
+    const [newComment, setNewComment] = useState<string>('')
+
+    function handleCreateNewComment(event: FormEvent) {
+        event.preventDefault();
+        alert(newComment)
+    }
+
+    const dateFormat = formatDistanceToNow(post.publishedAt, {
+        locale: ptBR,
+        addSuffix:true
+    })
+
     return (
         <article className="post">
             <header>
                 <div className=" author">
-                    <Avatar src='https://avatars.githubusercontent.com/u/170477618?v=4' hasBorder />
+                    <Avatar src={post.author.avatarUrl} hasBorder />
                     <div className="author-info">
-                        <strong>Valerio do job</strong>
-                        <span>job</span>
+                        <strong>{post.author.name}</strong>
+                        <span>{post.author.role}</span>
                     </div>
                 </div>
 
                 <time>
-                    públicado há 2 horas
+                    {dateFormat}
                 </time>
 
             </header>
             <div className="content">
-                <p> Satisfação ou seu dinheiro de volta R$:150 Hora</p>
+                <p> {post.content}</p>
             </div>
 
-            <form className="form">
+            <form className="form" onSubmit={handleCreateNewComment}>
                 <strong>Deixe um comentario</strong>
 
-                <textarea placeholder="Deixe um comentário" />
+                <textarea
+                    placeholder="Deixe um comentário"
+                    value={newComment}
+                    onChange={(e) => setNewComment(e.target.value)}
+                />
 
                 <footer>
-                    <button>
+                    <button type="submit">
                         Publicar
                     </button>
                 </footer>
