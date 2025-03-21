@@ -14,21 +14,12 @@
       "id": "2",
       "author": {
         "name": "Carlos Souza",
-        "role": "Engenheiro de Software",
+        "role": "Engenheiro de So,ftware",
         "avatarUrl": "https://github.com/marcuss83.png"
       },
       "publishedAt": "2025-03-17T15:30:00Z",
       "content": "Trabalhando em um projeto incrível com NestJS e WebSockets. Estou desenvolvendo um sistema de notificações em tempo real para uma plataforma de colaboração, onde os usuários recebem atualizações instantâneas sobre novas mensagens, tarefas concluídas e menções em comentários. O uso de WebSockets tem sido essencial para garantir uma experiência fluida e eficiente."
-    },
-    {
-      "id": "3",
-      "author": {
-        "name": "Mariana Oliveira",
-        "role": "UX Designer",
-        "avatarUrl": "https://github.com/niipvargas.png"
-      },
-      "publishedAt": "2025-03-16T10:15:00Z",
-      "content": "Design de interfaces pensando na acessibilidade é essencial! Recentemente, realizei uma pesquisa sobre como melhorar a experiência de navegação para pessoas com deficiência visual e auditiva. Implementamos melhorias como contraste adequado, suporte a leitores de tela e navegação por teclado. Pequenas mudanças podem fazer uma grande diferença na inclusão digital!"
     }
+
   ]
 }

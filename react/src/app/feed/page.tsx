@@ -9,6 +9,8 @@ import { BsPencilSquare } from "react-icons/bs";
 import { FormEvent, useEffect, useState } from 'react'
 import axios from 'axios'
 import Post from '@/components/Post'
+import TextareaCustom from '@/components/TextareaCustom'
+import ButtonCustom from '@/components/ButtonCustom'
 
 export default function Feed() {
     const [posts, setPosts] = useState<any[]>([]);
@@ -21,16 +23,27 @@ export default function Feed() {
 
     async function loadPost() {
         const response = await axios.get('http://localhost:3001/posts');
+        const postSort = response.data.sort((a: any, b: any) => (
+            new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+        ))
+        setPosts(postSort)
 
-        const postSort = response.data.sort((a: any, b: any) => (new Date(a.publishedAt) as any) - (new Date(b.publishedAt) as any))
-        setPosts(response.data)
+        // const response = await axios.get('http://localhost:3001/posts', {
+        //     params: {
+        //         _sort: "publishedAt",
+        //         _orden: "desc"
+        //     }
+        // })
+
     }
 
     async function handleCreatePost(event: FormEvent) {
+    event.preventDefault()
+
         const post = {
             id: posts.length + 1,
             content: content,
-            publishedAt: new Date().toDateString(),
+            publishedAt: new Date().toISOString(),
             author: {
                 name: "Fellipe Sant Anna Cota",
                 role: "Metarlugico",
@@ -62,16 +75,14 @@ export default function Feed() {
                 </aside>
 
                 <main className="main">
-                    <form onSubmit={handleCreatePost}>
+                    <form onSubmit={handleCreatePost} className="form-post">
 
-                        <textarea placeholder='="o que esta pensando ?'
-                            value={content}
-                            onChange={(e) => setContent(e.target.value)}
+                        <TextareaCustom message={content}
+                            setMessage={setContent}
+                            title='O que voce esta pensando?'
                         />
 
-                        <button type='submit'>
-                            pubiicar
-                        </button>
+                        <ButtonCustom/>
 
                     </form>
                     {posts.map(item => (

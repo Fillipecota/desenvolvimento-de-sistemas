@@ -49,6 +49,13 @@
     /* background-color: #e1e1e6; */
 
 }
+.form-post{
+    width: 100%;
+    background-color: #202024;
+    padding: 40px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
 
 .cover {
     width: 100%;
@@ -75,3 +82,4 @@
     color: #8d8d99;
     line-height: 1.6;
 }
+

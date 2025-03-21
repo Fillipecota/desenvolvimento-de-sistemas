@@ -4,6 +4,8 @@ import Avatar from "../Avatar";
 import "./styles.css";
 import { format, formatDistance, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import TextareaCustom from "../TextareaCustom";
+import axios from "axios";
 
 type Autor = {
     name: string;
@@ -20,6 +22,7 @@ type comment = {
 
 type postProps = {
     post: {
+        id:string
         author: Autor;
         publishedAt: Date;
         content: string;
@@ -31,14 +34,29 @@ type postProps = {
 export default function Post({ post }: postProps) {
     const [newComment, setNewComment] = useState<string>('')
 
-    function handleCreateNewComment(event: FormEvent) {
+    async function handleCreateNewComment(event: FormEvent) {
         event.preventDefault();
         alert(newComment)
+
+
+        const comment = {
+            comment: newComment,
+            publishedAt: new Date().toISOString(),
+            author: {
+                name: "Fellipe Sant Anna Cota",
+                role: "Metarlugico",
+                avatarUrl: "https://avatars.githubusercontent.com/u/170477610?v=4"
+            }
+        }
+
+        await axios.patch(`http://localhost:3001/posts/ ${post.id}`,{
+            comments:comment
+        })
     }
 
     const dateFormat = formatDistanceToNow(post.publishedAt, {
         locale: ptBR,
-        addSuffix:true
+        addSuffix: true
     })
 
     return (
@@ -64,11 +82,9 @@ export default function Post({ post }: postProps) {
             <form className="form" onSubmit={handleCreateNewComment}>
                 <strong>Deixe um comentario</strong>
 
-                <textarea
-                    placeholder="Deixe um comentário"
-                    value={newComment}
-                    onChange={(e) => setNewComment(e.target.value)}
-                />
+                <TextareaCustom message={newComment}
+                    setMessage={setNewComment}
+                    title="Deixe um comentario" />
 
                 <footer>
                     <button type="submit">

@@ -86,12 +86,12 @@
     max-height: 0;
 }
 
-.form:focus-within footer{
+.form:focus-within footer {
     visibility: visible;
     max-height: none;
 }
 
-.form footer button {
+/* .form footer button {
     padding: 16px 24px;
     margin-top: 16px;
     border-radius: 8px;
@@ -109,4 +109,4 @@
 .form footer button:disabled {
     opacity: 0.7;
     cursor: not-allowed;
-}
+} */
