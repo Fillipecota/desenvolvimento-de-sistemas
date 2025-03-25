@@ -90,6 +90,13 @@
     visibility: visible;
     max-height: none;
 }
+.comment{
+    padding: 16px;
+    background-color: #323238;
+    margin-top: 16px;
+    
+}
+
 
 /* .form footer button {
     padding: 16px 24px;

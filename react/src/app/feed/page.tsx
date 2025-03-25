@@ -11,6 +11,28 @@ import axios from 'axios'
 import Post from '@/components/Post'
 import TextareaCustom from '@/components/TextareaCustom'
 import ButtonCustom from '@/components/ButtonCustom'
+import { strict } from 'assert'
+
+// type Author = {
+//     name: string;
+//     role: string;
+//     avatarUrl: string;
+// }
+
+// type comment = {
+//     id:string;
+//     author: Author;
+//     publishedAt: Date;
+//     content:string;
+//     comments:comment[];
+// }
+
+// type Post = {
+//     id: number;
+//     author: Author;
+//     publishedAt: Date;
+//     content: string;
+// }
 
 export default function Feed() {
     const [posts, setPosts] = useState<any[]>([]);
@@ -41,7 +63,7 @@ export default function Feed() {
     event.preventDefault()
 
         const post = {
-            id: posts.length + 1,
+            id: String(posts.length + 1),
             content: content,
             publishedAt: new Date().toISOString(),
             author: {
@@ -86,7 +108,7 @@ export default function Feed() {
 
                     </form>
                     {posts.map(item => (
-                        <Post post={item} key={item.id} />
+                        <Post post={item} key={item.id} setPost={setPosts} />
                     ))}
                 </main>
             </div>

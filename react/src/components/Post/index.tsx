@@ -1,11 +1,12 @@
 'use client'
-import { FormEvent, useState } from "react";
+import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import Avatar from "../Avatar";
 import "./styles.css";
 import { format, formatDistance, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import TextareaCustom from "../TextareaCustom";
 import axios from "axios";
+import ButtonCustom from "../ButtonCustom";
 
 type Autor = {
     name: string;
@@ -13,31 +14,39 @@ type Autor = {
     avatarUrl: string;
 }
 
-type comment = {
-    massage: string;
-    publishedAt: Date;
-    like: number;
+type Comment = {
+    id: string;
     author: Autor;
+    publishedAt: Date;
+    content: string;
+    comment: string;
+}
+type Post = {
+    id: string
+    author: Autor;
+    publishedAt: Date;
+    content: string;
+    comments: Comment[];
 }
 
 type postProps = {
-    post: {
-        id:string
-        author: Autor;
-        publishedAt: Date;
-        content: string;
-        // comments: comment[];
-    }
+    setPost: Dispatch<SetStateAction<Post[]>>,
+    post: Post
 }
 
 
-export default function Post({ post }: postProps) {
+export default function Post({ post, setPost }: postProps) {
     const [newComment, setNewComment] = useState<string>('')
+
+    async function loadPost() {
+        const response = await axios.get(`http://localhost:3001/posts/${post.id}`);
+        setPost((prev: Post[]) =>
+            prev.map(atual => (
+                atual.id == post.id ? response.data : atual)))
+    }
 
     async function handleCreateNewComment(event: FormEvent) {
         event.preventDefault();
-        alert(newComment)
-
 
         const comment = {
             comment: newComment,
@@ -49,9 +58,14 @@ export default function Post({ post }: postProps) {
             }
         }
 
-        await axios.patch(`http://localhost:3001/posts/ ${post.id}`,{
-            comments:comment
+        const comments = post.comments?.length ? [...post.comments, comment] : [comment]
+
+        await axios.patch(`http://localhost:3001/posts/${post.id}`, {
+            "comments": comments
+
         })
+        loadPost();
+        setNewComment('');
     }
 
     const dateFormat = formatDistanceToNow(post.publishedAt, {
@@ -87,12 +101,40 @@ export default function Post({ post }: postProps) {
                     title="Deixe um comentario" />
 
                 <footer>
-                    <button type="submit">
-                        Publicar
-                    </button>
+                    < ButtonCustom />
                 </footer>
             </form>
+
+            {post.comments?.length && post.comments.map(comment => (
+                <article className="post comment" key={comment.id}>
+                    <header>
+                        <div className="author">
+                            <Avatar src={comment.author.avatarUrl} hasBorder />
+                            <div className="author-info">
+                                <strong>{comment.author.name}</strong>
+                                <span>{comment.author.role}</span>
+                            </div>
+                        </div>
+
+                        <time>
+                            {dateFormat}
+                        </time>
+
+                    </header>
+                    <div className="content">
+                        <p> {comment.comment}</p>
+                    </div>
+                </article>
+            ))}
 
         </article>
     )
 }
+
+
+
+
+
+
+
+{/* <h1 key={comment.comments}>{comment.comments}</h1> */ }
