@@ -1,14 +1,17 @@
 'use client'
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import Avatar from "../Avatar";
+import { v4 as uuid } from 'uuid';
 import "./styles.css";
 import { format, formatDistance, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import TextareaCustom from "../TextareaCustom";
 import axios from "axios";
 import ButtonCustom from "../ButtonCustom";
+import Comment from "../Components";
+import { v4 } from "uuid";
 
-type Autor = {
+type Author = {
     name: string;
     role: string;
     avatarUrl: string;
@@ -16,14 +19,15 @@ type Autor = {
 
 type Comment = {
     id: string;
-    author: Autor;
+    like: number;
+    author: Author;
     publishedAt: Date;
     content: string;
     comment: string;
 }
 type Post = {
     id: string
-    author: Autor;
+    author: Author;
     publishedAt: Date;
     content: string;
     comments: Comment[];
@@ -49,8 +53,10 @@ export default function Post({ post, setPost }: postProps) {
         event.preventDefault();
 
         const comment = {
+            id: uuid(),
             comment: newComment,
             publishedAt: new Date().toISOString(),
+            like: 0,
             author: {
                 name: "Fellipe Sant Anna Cota",
                 role: "Metarlugico",
@@ -67,6 +73,32 @@ export default function Post({ post, setPost }: postProps) {
         loadPost();
         setNewComment('');
     }
+
+    async function hendleDeleteComment(event: MouseEvent, id: string) {
+        event.preventDefault();
+
+        const comentsFilter = post.comments.filter(comment => comment.id !== id);
+
+        await axios.patch(`http://localhost:3001/posts/${post.id}`, {
+            "comments": comentsFilter
+        })
+        loadPost();
+    }
+
+    async function hendleLikeComment(event: MouseEvent, id: string) {
+        event.preventDefault();
+        const commentUpdatd = post.comments.map(comment => {
+            if (comment.id === id) {
+                return { ...comment, like: comment.like + 1 };
+            }
+            return Comment
+        })
+        await axios.patch(`http://localhost:3001/posts/${post.id}`, {
+            "comments": commentUpdatd
+        })
+        loadPost();
+    }
+
 
     const dateFormat = formatDistanceToNow(post.publishedAt, {
         locale: ptBR,
@@ -105,26 +137,8 @@ export default function Post({ post, setPost }: postProps) {
                 </footer>
             </form>
 
-            {post.comments?.length && post.comments.map(comment => (
-                <article className="post comment" key={comment.id}>
-                    <header>
-                        <div className="author">
-                            <Avatar src={comment.author.avatarUrl} hasBorder />
-                            <div className="author-info">
-                                <strong>{comment.author.name}</strong>
-                                <span>{comment.author.role}</span>
-                            </div>
-                        </div>
-
-                        <time>
-                            {dateFormat}
-                        </time>
-
-                    </header>
-                    <div className="content">
-                        <p> {comment.comment}</p>
-                    </div>
-                </article>
+            {post.comments?.length && post.comments.map(item => (
+                <Comment key={item.id} comment={item} handleDelete={hendleDeleteComment} handleLike={hendleLikeComment} />
             ))}
 
         </article>
@@ -138,3 +152,20 @@ export default function Post({ post, setPost }: postProps) {
 
 
 {/* <h1 key={comment.comments}>{comment.comments}</h1> */ }
+
+// <div className="author">
+// <Avatar src={comment.author.avatarUrl} hasBorder />
+// <div className="author-info">
+//     <strong>{comment.author.name}</strong>
+//     <span>{comment.author.role}</span>
+// </div>
+// </div>
+
+// <time>
+// {dateFormat}
+// </time>
+
+// </header>
+// <div className="content">
+// <p> {comment.comment}</p>
+// </div>
