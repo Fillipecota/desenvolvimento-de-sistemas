@@ -1,32 +1,7 @@
 {
   "itens": [
     {
-      "id": "b0af9b62-bd4b-4b55-98b2-b8d1bba1dbb1",
-      "text": "Arroz",
-      "checked": false
-    },
-    {
-      "id": "c5d0bc3b-fc6e-4f52-95be-f3814ec7b2b8",
-      "text": "Feijão",
-      "checked": true
-    },
-    {
-      "id": "b0d50a18-3121-4b97-9de9-99d6e254c95e",
-      "text": "Carne",
-      "checked": false
-    },
-    {
-      "id": "1eaaedcd-c3b6-4087-9092-370b599d1104",
-      "text": "Tomate",
-      "checked": true
-    },
-    {
-      "id": "e35d8b6f-d73b-4fba-88d0-b51b387cbd9d",
-      "text": "Alface",
-      "checked": false
-    },
-    {
-      "id": "f0fb07c9-58b3-46ff-b839-d82187ce9d2f",
+      "id": "0b9ea59c-32f7-47e5-bb2e-16abc0068672",
       "text": "oi",
       "checked": false
     }

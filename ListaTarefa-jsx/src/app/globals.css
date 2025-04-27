@@ -29,6 +29,8 @@
 
 .cont input {
 background-color: #797a81;
+max-width: 980px;
+padding: 10px;
 }
 
 .main {
@@ -38,4 +40,17 @@ background-color: #797a81;
     text-align: center;
     border-bottom: 1px solid #444;
     padding-bottom: 20px;
+}
+.cocluidas{
+    color: red;
+}
+Button{
+    padding: 16px 24px;
+    margin-top: 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: #00875f;
+    color: #ffff;
+    font-weight: bold;
+    cursor: pointer;
 }
