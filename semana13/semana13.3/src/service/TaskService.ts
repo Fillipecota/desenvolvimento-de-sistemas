@@ -1,10 +1,8 @@
 import { Task } from "../entity/Task";
-import { TaskRepository } from "../repository/taskRepository";
 
 class TaskService {
 
     private taskList: Task[] = [];
-    private taskRepository = new TaskRepository();
 
     public create(text: string): void {
         const textAlreadyExist = this.taskList.find(task => task.getText() === text);
@@ -13,8 +11,7 @@ class TaskService {
         }
 
         const newTask = new Task(text);
-        this.taskRepository.create(newTask)
-        // this.taskList.push(newTask);
+        this.taskList.push(newTask);
     }
 
     public getAll(): Task[] {
@@ -26,32 +23,29 @@ class TaskService {
         return task ? task : null;
     }
 
-    public updateCompleted(id: string) {
+    public updateCompleted(id: string){
         const task = this.getById(id);
-        if (task === null) {
+        if(task === null){
             throw new Error("Tarefa não foi encontrada.")
         }
 
-        task.setCompleted();
+        task.setCompleted(); 
         return task;
     }
 
-    public updateText(id: string, text: string) {
+    public updateText(id: string, text: string){
         const task = this.getById(id);
-        if (task === null) {
+        if(task === null){
             throw new Error("Tarefa não foi encontrada.")
         }
 
         task.setText(text);
         return task;
     }
-    public delete(id: string) {
-        const task = this.getById(id);
-        if (task === null) {
-            throw new Error("tarefa não foi encontrada");
-        }
-        const tasksFilter= this.taskList.filter(task => task.getId() !== id)
-        this.taskList = tasksFilter
+
+    public deleteTask(id: string){
+        this.taskList = this.taskList
+        .filter(task => task.getId() !== id);
     }
 
 }
