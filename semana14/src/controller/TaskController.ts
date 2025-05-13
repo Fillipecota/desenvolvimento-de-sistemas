@@ -3,6 +3,8 @@ import { taskService } from "../service/TaskService";
 
 
 export async function taskController(app: FastifyInstance) {
+    app.addHook("onRequest", app.authenticate)
+
     app.post("/task", async (request, reply) => {
         const body = request.body as { text: string };
 

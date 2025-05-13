@@ -18,7 +18,7 @@ export async function userController(app: FastifyInstance) {
         const body = request.body as loginType;
 
         try {
-            const token = await userService.login(body);
+            const token = await userService.login(body, app);
             return reply.code(200).send({ acess_token: token });
         } catch (error: any) {
             return reply.code(401).send({ erro: error.message })
