@@ -1,7 +1,4 @@
-import { error } from "console"
 import fp from "fastify-plugin"
-import { request } from "http"
-
 
 export default fp(async (fastify,) => {
     fastify.register(require("fastify-jwt"), {

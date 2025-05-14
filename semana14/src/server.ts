@@ -3,6 +3,9 @@ import { taskController } from "./controller/TaskController";
 import cors from "@fastify/cors";
 import { userController } from "./controller/UserController";
 import authjwt from "./middleware/authjwt";
+import fastifySwagger from "@fastify/swagger";
+import { swaggerConfig } from "./config/swagger";
+import fastifySwaggerUi from "@fastify/swagger-ui";
 
 const app = fastify();
 
@@ -10,7 +13,9 @@ app.register(cors, {
     origin: true,
     methods: ["GET", "POST", "PATCH", "DELETE"]
 });
-app.register(authjwt)
+app.register(fastifySwagger, swaggerConfig as any);
+app.register(fastifySwaggerUi, { routePrefix: '/docs', uiConfig: { docExpansion: 'list' } })
+app.register(authjwt);
 app.register(taskController);
 app.register(userController);
 
