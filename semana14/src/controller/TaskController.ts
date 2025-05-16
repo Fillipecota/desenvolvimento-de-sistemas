@@ -3,22 +3,26 @@ import { taskService } from "../service/TaskService";
 import { createTaskSchema, generalTaskSchema } from "../config/schema/task.schema";
 
 
+
 export async function taskController(app: FastifyInstance) {
     app.addHook("onRequest", app.authenticate)
 
-    app.post("/task", { schema: createTaskSchema }, async (request, reply) => {
+    app.post("/task", { schema: createTaskSchema }, async (request: FastifyRequest, reply: FastifyReply) => {
         const body = request.body as { text: string };
+        const userId = request.user.id
+
 
         try {
-            await taskService.create(body.text);
+            await taskService.create(body.text, userId);
             return reply.code(201).send();
         } catch (error: any) {
             return reply.code(409).send({ erro: error.message })
         }
     })
 
-    app.get("/task", { schema: generalTaskSchema }, async (_, reply) => {
-        const list = await taskService.getAll();
+    app.get("/task", { schema: generalTaskSchema }, async (request: FastifyRequest, reply: FastifyReply) => {
+        const userId = request.user.id
+        const list = await taskService.getAll(userId);
         return reply.code(200).send(list);
     })
 
