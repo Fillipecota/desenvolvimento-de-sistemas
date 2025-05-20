@@ -9,3 +9,5 @@
 
 ## CRIA A MIGRATION PARA CRIAR O BANCO DE DADOS E AS ENTIDADES
 ```npx prisma migrate dev --name create-database```
+## schema
+```` http://localhost:3333/docs/``
